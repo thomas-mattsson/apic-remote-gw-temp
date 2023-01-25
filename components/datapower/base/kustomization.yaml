@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
 - catalogsource.yaml
-#- operand.yaml
+- operand.yaml
 - namespace.yaml
