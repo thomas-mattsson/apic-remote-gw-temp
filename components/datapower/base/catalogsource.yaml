@@ -2,7 +2,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: CatalogSource
 metadata:
   name: ibm-datapower-operator-catalog
-  namespace: operators
+  namespace: olm
 spec:
   displayName: IBM DataPower Operator
   publisher: IBM
