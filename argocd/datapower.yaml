@@ -14,7 +14,5 @@ spec:
     server: https://kubernetes.default.svc
     namespace: datapower
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
       selfHeal: true
