@@ -1,0 +1,3 @@
+resources:
+  - datapower.yaml
+  - certmanager.yaml
