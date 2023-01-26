@@ -8,7 +8,8 @@ spec:
     accept: true
     #use: developers-limited
     use: production
-    license: L-RJON-CCAT6P
+    #license: L-RJON-CCAT6P
+    license: L-RJON-CCAT5F
   replicas: 1
   users:
   - name: admin
