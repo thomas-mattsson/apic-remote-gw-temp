@@ -1,0 +1,11 @@
+apiVersion: datapower.ibm.com/v1beta3
+kind: DataPowerService
+metadata:
+  name: datapower
+spec:
+  version: 10.5-lts
+  license:
+    accept: true
+    license: L-RJON-CCAT5F
+    use: production
+  replicas: 2
