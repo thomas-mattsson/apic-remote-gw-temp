@@ -10,6 +10,8 @@ spec:
     repoURL: https://github.com/Nordic-MVP-GitOps-Repos/apic-remote-gw.git
     targetRevision: HEAD
     path: 'env/nonprod/datapower'
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: datapower
