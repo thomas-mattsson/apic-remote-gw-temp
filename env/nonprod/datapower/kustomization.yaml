@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
 - ../../../components/datapower-operator/base/
 - ../../../components/datapower/overlays/apicgw/
-- ../../../components/datapower/overlays/db-apigw/
+#- ../../../components/datapower/overlays/db-apigw/
 
 components:
 - ../../../components/datapower/variants/nonprod
