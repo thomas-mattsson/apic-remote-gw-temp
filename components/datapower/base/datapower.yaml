@@ -1,15 +1,13 @@
 apiVersion: datapower.ibm.com/v1beta3
 kind: DataPowerService
 metadata:
-  name: datapower-db-apigw
+  name: datapower
 spec:
   version: 10.5-lts
   license:
     accept: true
-    use: developers-limited
-    license: L-RJON-CCAT6P
-    #license: L-RJON-CCAT5F
-    #use: production
+    #use: developers-limited
+    #license: L-RJON-CCAT6P
   replicas: 1
   users:
   - name: admin
