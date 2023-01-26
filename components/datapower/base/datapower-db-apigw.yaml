@@ -6,7 +6,8 @@ spec:
   version: 10.5-lts
   license:
     accept: true
-    use: developers-limited
+    #use: developers-limited
+    use: production
     license: L-RJON-CCAT6P
   replicas: 1
   users:
