@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
 - catalogsource.yaml
-- datapower-apic.yaml
-- datapower-db-apigw.yaml
+- datapower.yaml
 - namespace.yaml
 - subscription.yaml
