@@ -6,5 +6,5 @@ spec:
   channel: v3.2
   installPlanApproval: Automatic
   name: ibm-apiconnect
-  source: ibm-operator-catalog
+  source: ibm-apic-operator-catalog
   sourceNamespace: olm
