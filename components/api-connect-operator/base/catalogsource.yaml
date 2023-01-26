@@ -1,7 +1,7 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: CatalogSource
 metadata:
-  name: ibm-operator-catalog
+  name: ibm-apic-operator-catalog
   namespace: operators
 spec:
   displayName: IBM Operator Catalog
