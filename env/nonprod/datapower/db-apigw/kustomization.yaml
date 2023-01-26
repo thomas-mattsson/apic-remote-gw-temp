@@ -6,3 +6,5 @@ resources:
 
 components:
 - ../../../components/datapower/variants/nonprod
+
+nameSuffix: '-db-apigw'
