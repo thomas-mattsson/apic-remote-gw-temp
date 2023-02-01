@@ -1,3 +1,4 @@
+#Template
 apiVersion: gateway.apiconnect.ibm.com/v1beta1
 kind: GatewayCluster
 metadata:
