@@ -1,0 +1,48 @@
+apiVersion: gateway.apiconnect.ibm.com/v1beta1
+kind: GatewayCluster
+metadata:
+  name: gwv6
+spec:
+  version: 10.0.5
+  profile: n1xc4.m8
+  imagePullSecrets:
+  - ibm-entitlement-key
+  apicGatewayServiceV5CompatibilityMode: false
+  gatewayEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts:
+    - name: gw.$STACK_HOST
+      secretName: gwv6-endpoint
+  gatewayManagerEndpoint:
+    annotations:
+      certmanager.k8s.io/issuer: ingress-issuer
+    hosts:
+    - name: gwd.$STACK_HOST
+      secretName: gwv6-manager-endpoint
+  apicGatewayServiceTLS:
+    secretName: gateway-service
+  apicGatewayPeeringTLS:
+    secretName: gateway-peering
+  datapowerLogLevel: 3
+  license:
+    accept: true
+    use: nonproduction
+  tokenManagementService:
+    enabled: true
+    storage:
+      storageClassName: ibmc-block-gold
+      volumeSize: 30Gi
+  additionalDomainConfig:
+    - name: "apiconnect"
+      certs:
+      - certType: "usrcerts"
+        secret: "apimanager-ca"
+      dpApp:
+        config:
+        - "gwd-add-apimgmt-ca"
+        local:  []
+  adminUser:
+    secretName: admin-credentials
+  syslogConfig:
+    enabled: false # if true, provide below details
