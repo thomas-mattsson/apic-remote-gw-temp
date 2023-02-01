@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gwd-add-apimgmt-ca
+data:
+  gwd_client.cfg: |
+    crypto
+    certificate gwd_client_valcred_ca cert:///api-manager.crt
+    valcred gwd_client_valcred ; certificate gwd_client_valcred_ca ; exit
+    ssl-client gwd_client
+      validate-server-cert on
+      valcred gwd_client_valcred
+    exit
+    exit
