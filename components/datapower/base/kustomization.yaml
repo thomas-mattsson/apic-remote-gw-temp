@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 - datapower.yaml
-- gwd-add-apimgmt-ca.yaml
+
