@@ -21,7 +21,7 @@ The application instance label needs to be changed as it conflicts with the data
 applicationInstanceLabelKey: argocd.argoproj.io/instance
 ```
 
-To correctly show the DatapowerService CRD object as healthy when running, the following resource customization needs to be added:
+To correctly show the CRD types used in this project as healthy when running, the following resource customization needs to be added:
 
 ```yaml
   resourceCustomizations: |
@@ -39,6 +39,28 @@ To correctly show the DatapowerService CRD object as healthy when running, the f
             return hs
           end
         end
+    cert-manager.io/Certificate: |
+      hs = {}
+      if obj.status ~= nil then
+        if obj.status.conditions ~= nil then
+          for i, condition in ipairs(obj.status.conditions) do
+            if condition.type == "Ready" and condition.status == "False" then
+              hs.status = "Degraded"
+              hs.message = condition.message
+              return hs
+            end
+            if condition.type == "Ready" and condition.status == "True" then
+              hs.status = "Healthy"
+              hs.message = condition.message
+              return hs
+            end
+          end
+        end
+      end
+
+      hs.status = "Progressing"
+      hs.message = "Waiting for certificate"
+      return hs
 ```
 
 Optional: To allow ingress through a load balancer (assuming cloud vendor infrastructure provides automatic provisioning):
