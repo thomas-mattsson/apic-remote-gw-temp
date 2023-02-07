@@ -78,10 +78,14 @@ To correctly show the CRD types used in this project as healthy when running, th
       return hs
 ```
 
-Optional: To allow ingress through a load balancer (assuming cloud vendor infrastructure provides automatic provisioning):
+Optional: To allow ingress through a load balancer instead (assuming cloud vendor infrastructure provides automatic provisioning):
 
 ```yaml
 server:      
   service:
     type: LoadBalancer
 ```
+
+To apply the above instance run the following command:
+
+`kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/argo-setup/argocd.yaml -n argocd`
