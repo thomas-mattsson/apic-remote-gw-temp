@@ -10,7 +10,13 @@ Log into the cluster so you can use `kubectl` against it.
 
 Datapower and API connect are installed through operators so we need OLM to be installed. First of all `operator-sdk` CLI tool is needed. For MacOS it can be installed with `brew install operator-sdk`, otherwise see here: <https://sdk.operatorframework.io/docs/installation/>
 
-Install OLM by running `operator-sdk olm install`. For details see here: <https://olm.operatorframework.io/docs/getting-started/>
+Install OLM by running
+
+```bash
+operator-sdk olm install
+```
+
+For details see here: <https://olm.operatorframework.io/docs/getting-started/>
 
 ### Updates to the repository
 
@@ -34,7 +40,9 @@ If Argo CD is used see details in [argocd/argo-setup/README.md](argocd/argo-setu
 
 To install the remote gateway and its dependencies apply the necessary ArgoCD applications through the bootstrap application as follows:
 
-`kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/bootstrap.yaml -n argocd`
+```bash
+kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/bootstrap.yaml -n argocd
+```
 
 ## Secrets needed
 
