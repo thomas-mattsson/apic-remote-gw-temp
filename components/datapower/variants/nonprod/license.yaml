@@ -6,5 +6,5 @@ spec:
   version: 10.0.5.2
   license:
     accept: true
-    use: developers-limited
-    license: L-RJON-CCAT6P
+    license: L-GVEN-GFUPVE
+    use: nonproduction
