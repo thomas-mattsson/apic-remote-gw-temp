@@ -1,6 +1,17 @@
-Settings needed for the ArgoCD operator and ArgoCD instance needed for managing the Datapower operators.
+# Settings needed for the ArgoCD operator and ArgoCD instance needed for managing the Datapower operators
 
 ## Operator
+
+Apply the catalog source to the `olm` namespace as follows:
+
+`kubectl apply -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/master/deploy/catalog_source.yaml -n olm`
+
+Create the argocd namespace and add the operator group object to it as follows:
+
+```bash
+kubectl create namespace argocd
+kubectl apply -f https://raw.githubusercontent.com/argoproj-labs/argocd-operator/master/deploy/operator_group.yaml -n argocd
+```
 
 ArgoCD needs to be installed cluster-wide so the following part is needed in the subscription object for the ArgoCD operator:
 
@@ -12,6 +23,10 @@ spec:
       - name: ARGOCD_CLUSTER_CONFIG_NAMESPACES
         value: argocd
 ```
+
+Apply the subscription with the change above as follows:
+
+`kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/argo-setup/subscription.yaml -n operators`
 
 ## Operand (ArgoCD)
 
