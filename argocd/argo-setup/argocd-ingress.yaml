@@ -47,7 +47,7 @@ spec:
     ingress:
       enabled: true
     grpc:
+      host: argocd-grpc.REPLACE_WITH_DOMAIN
       ingress:
-        host: argocd-grpc.REPLACE_WITH_DOMAIN
         enabled: true
     insecure: true
