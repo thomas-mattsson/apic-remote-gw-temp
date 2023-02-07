@@ -2,4 +2,3 @@ resources:
   - datapower.yaml
   - cert-manager.yaml
   - api-connect-operator.yaml
-  - datapower-operator.yaml
