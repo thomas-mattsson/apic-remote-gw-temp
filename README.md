@@ -22,7 +22,7 @@ Make sure to update [env/nonprod/ingress-subdomain.yaml](env/nonprod/ingress-sub
 
 #### Gitops repository
 
-Make sure to update [argocd/kustomization.yaml](argocd/kustomization.yaml) with the git repo and revision used in your fork of this repository.
+Make sure to update [argocd/kustomization.yaml](argocd/kustomization.yaml) and [argocd/bootstrap.yaml](argocd/bootstrap.yaml) with the git repo and revision used in your fork of this repository.
 
 ### ArgoCD
 
@@ -48,3 +48,16 @@ Add the API manager CA following these instructions:
 2. Add the CA into a secret using the following command
 
 `kubectl create secret generic apimanager-ca --from-file=./api-manager.crt -n datapower`
+
+Add the IBM entitlement key following these instructions:
+
+1. Log in to [https://myibm.ibm.com/products-services/containerlibrary](https://myibm.ibm.com/products-services/containerlibrary) with an IBMid and password associated with the entitled software.
+2. Select the **View library** option to verify your entitlement(s).
+3. Select the **Get entitlement key** to retrieve the key.
+
+```bash
+kubectl create secret docker-registry ibm-entitlement-key -n datapower \
+--docker-username=cp \
+--docker-password="<entitlement_key>" \
+--docker-server=cp.icr.io
+```
