@@ -3,7 +3,7 @@ kind: Kustomization
 
 components:
 - ../../../../components/datapower/variants/nonprod
-- ../../ingress-subdomain.yaml # Custom value for the domain
+- ../../custom/ # Custom values for the cluster
 
 resources:
 - ../../../../components/datapower/base
