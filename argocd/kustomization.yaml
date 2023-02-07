@@ -2,3 +2,17 @@ resources:
   - datapower.yaml
   - cert-manager.yaml
   - api-connect-operator.yaml
+
+patches:
+- target:
+    group: argoproj.io
+    kind: Application
+    metadata:
+      name: '*'
+  patch: |-
+    - op: add
+      path: /spec/source/repoURL
+      value: https://github.com/Nordic-MVP-GitOps-Repos/apic-remote-gw.git
+    - op: add
+      path: /spec/source/targetRevision
+      value: HEAD
