@@ -55,27 +55,28 @@ To correctly show the CRD types used in this project as healthy when running, th
           end
         end
     cert-manager.io/Certificate:
-      hs = {}
-      if obj.status ~= nil then
-        if obj.status.conditions ~= nil then
-          for i, condition in ipairs(obj.status.conditions) do
-            if condition.type == "Ready" and condition.status == "False" then
-              hs.status = "Degraded"
-              hs.message = condition.message
-              return hs
-            end
-            if condition.type == "Ready" and condition.status == "True" then
-              hs.status = "Healthy"
-              hs.message = condition.message
-              return hs
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil then
+          if obj.status.conditions ~= nil then
+            for i, condition in ipairs(obj.status.conditions) do
+              if condition.type == "Ready" and condition.status == "False" then
+                hs.status = "Degraded"
+                hs.message = condition.message
+                return hs
+              end
+              if condition.type == "Ready" and condition.status == "True" then
+                hs.status = "Healthy"
+                hs.message = condition.message
+                return hs
+              end
             end
           end
         end
-      end
 
-      hs.status = "Progressing"
-      hs.message = "Waiting for certificate"
-      return hs
+        hs.status = "Progressing"
+        hs.message = "Waiting for certificate"
+        return hs
 ```
 
 There are two yaml files provided in this repo with the above changes applied. One exposing argocd through ingress and the other through a load balancer service.
