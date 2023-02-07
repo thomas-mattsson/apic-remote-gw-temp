@@ -18,6 +18,12 @@ We are using ArgoCD to deploy the remote gateway and the necessary components. O
 
 If Argo CD is used see details in [argocd/argo-setup/README.md](argocd/argo-setup/README.md)
 
+## Add the ArgoCD applications
+
+To install the remote gateway and its dependencies apply the necessary ArgoCD applications through the bootstrap application as follows:
+
+`kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/bootstrap.yaml -n argocd`
+
 ## Secrets needed
 
 Replace `<password>` with something hard to guess
