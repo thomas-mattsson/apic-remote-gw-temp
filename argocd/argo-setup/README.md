@@ -80,9 +80,9 @@ To correctly show the CRD types used in this project as healthy when running, th
 
 There are two yaml files provided in this repo with the above changes applied. One exposing argocd through ingress and the other through a load balancer service.
 
-To apply the above instance and exposing using ingress update the file below with the ingress subdomain (replace REPLACE_WITH_DOMAIN with it):
+To apply the above instance and exposing it using ingress, download and update the file below with the ingress subdomain (replace REPLACE_WITH_DOMAIN with it):
 
-<https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/argo-setup/argocd-ingress.yaml> and then apply it.
+<apic-remote-gw/argocd/argo-setup/argocd-ingress.yaml> and then apply it.
 
 Or by exposing it with a load balancer service run the following command:
 
