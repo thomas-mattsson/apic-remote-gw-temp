@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
 - catalogsource.yaml
 - namespace.yaml
-- subscription.yaml
 - ingress-issuer-v1.yaml
