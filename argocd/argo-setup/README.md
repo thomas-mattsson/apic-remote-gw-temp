@@ -78,14 +78,12 @@ To correctly show the CRD types used in this project as healthy when running, th
       return hs
 ```
 
-Optional: To allow ingress through a load balancer instead (assuming cloud vendor infrastructure provides automatic provisioning):
+There are two yaml files provided in this repo with the above changes applied. One exposing argocd through ingress and the other through a load balancer service.
 
-```yaml
-server:      
-  service:
-    type: LoadBalancer
-```
+To apply the above instance and exposing using ingress run the following command:
 
-To apply the above instance run the following command:
+`kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/argo-setup/argocd-ingress.yaml -n argocd`
 
-`kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/argo-setup/argocd.yaml -n argocd`
+or by exposing it with a load balancer service run the following command:
+
+`kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/argo-setup/argocd-lb.yaml -n argocd`
