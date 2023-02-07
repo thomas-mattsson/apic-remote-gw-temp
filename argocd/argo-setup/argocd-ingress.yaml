@@ -43,11 +43,11 @@ spec:
       hs.message = "Waiting for certificate"
       return hs    
   server:
+    host: argocd.REPLACE_WITH_DOMAIN
+    ingress:
+      enabled: true
     grpc:
       ingress:
         host: argocd-grpc.REPLACE_WITH_DOMAIN
         enabled: true
-    ingress:
-      host: argocd.REPLACE_WITH_DOMAIN
-      enabled: true
     insecure: true
