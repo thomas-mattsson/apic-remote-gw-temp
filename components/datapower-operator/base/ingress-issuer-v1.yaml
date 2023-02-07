@@ -1,4 +1,5 @@
 # Copied from helper_files.zip found in IBM Fix central. See details here: https://www.ibm.com/docs/en/api-connect/10.0.5.x_lts?topic=kubernetes-obtaining-product-files
+# Updated duration and renewBefore fields so that they match cert managers format
 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,8 +39,8 @@ metadata:
     app.kubernetes.io/name: "ingress-ca"
   }
 spec:
-  duration: 87600h # 10 years
-  renewBefore: 720h # 30 days
+  duration: 87600h0m0s # 10 years
+  renewBefore: 720h0m0s # 30 days
   secretName: ingress-ca
   commonName: "ingress-ca"
   usages:
@@ -90,8 +91,8 @@ spec:
   - "client auth"
   - "signing"
   - "key encipherment"
-  duration: 17520h # 2 years
-  renewBefore: 720h # 30 days
+  duration: 17520h0m0s # 2 years
+  renewBefore: 720h0m0s # 30 days
   secretTemplate:
     labels:
       app.kubernetes.io/instance: "management"
@@ -119,8 +120,8 @@ spec:
   - "client auth"
   - "signing"
   - "key encipherment"
-  duration: 17520h # 2 years
-  renewBefore: 720h # 30 days
+  duration: 17520h0m0s # 2 years
+  renewBefore: 720h0m0s # 30 days
   secretTemplate:
     labels:
       app.kubernetes.io/instance: "management"
@@ -148,8 +149,8 @@ spec:
   - "client auth"
   - "signing"
   - "key encipherment"
-  duration: 17520h # 2 years
-  renewBefore: 720h # 30 days
+  duration: 17520h0m0s # 2 years
+  renewBefore: 720h0m0s # 30 days
   secretTemplate:
     labels:
       app.kubernetes.io/instance: "management"
@@ -177,8 +178,8 @@ spec:
   - "client auth"
   - "signing"
   - "key encipherment"
-  duration: 17520h # 2 years
-  renewBefore: 720h # 30 days
+  duration: 17520h0m0s # 2 years
+  renewBefore: 720h0m0s # 30 days
   secretTemplate:
     labels:
       app.kubernetes.io/instance: "management"
@@ -206,8 +207,8 @@ spec:
   - "client auth"
   - "signing"
   - "key encipherment"
-  duration: 17520h # 2 years
-  renewBefore: 720h # 30 days
+  duration: 17520h0m0s # 2 years
+  renewBefore: 720h0m0s # 30 days
   secretTemplate:
     labels:
       app.kubernetes.io/instance: "gatewaycluster"
@@ -236,8 +237,8 @@ spec:
   - "client auth"
   - "signing"
   - "key encipherment"
-  duration: 17520h # 2 years
-  renewBefore: 720h # 30 days
+  duration: 17520h0m0s # 2 years
+  renewBefore: 720h0m0s # 30 days
   secretTemplate:
     labels:
       app.kubernetes.io/instance: "gatewaycluster"
