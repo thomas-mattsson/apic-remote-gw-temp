@@ -7,7 +7,7 @@ patches:
 - target:
     group: argoproj.io
     kind: Application
-    name: '*'
+    labelSelector: group=applications
   patch: |-
     - op: add
       path: /spec/source/repoURL

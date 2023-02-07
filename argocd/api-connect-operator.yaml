@@ -4,6 +4,8 @@ metadata:
   name: api-connect-operator
   annotations:
     argocd.argoproj.io/sync-wave: "100"
+  labels:
+    group: applications
 spec:
   project: default
   source:
