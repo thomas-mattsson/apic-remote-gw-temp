@@ -3,7 +3,7 @@ kind: Kustomization
 
 components:
 - ../../../../components/datapower/variants/nonprod
-- ../../custom/ # Custom values for the cluster
+- ../../custom # Custom values for the cluster
 
 resources:
 - ../../../../components/datapower/base
