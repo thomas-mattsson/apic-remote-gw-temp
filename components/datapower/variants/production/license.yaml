@@ -1,11 +1,11 @@
-apiVersion: datapower.ibm.com/v1beta3
-kind: DataPowerService
+aapiVersion: gateway.apiconnect.ibm.com/v1beta1
+kind: GatewayCluster
 metadata:
-  name: datapower
+  name: gateway-cluster
 spec:
-  version: 10.5-lts
+  version: 10.0.5.2
   license:
     accept: true
     license: L-RJON-CCAT5F
     use: production
-  replicas: 2
+

@@ -7,8 +7,6 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Nordic-MVP-GitOps-Repos/apic-remote-gw.git
-    targetRevision: HEAD
     path: 'components/api-connect-operator/base'
   destination:
     server: https://kubernetes.default.svc

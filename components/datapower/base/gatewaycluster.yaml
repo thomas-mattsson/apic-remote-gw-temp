@@ -1,49 +1,46 @@
-#Template
 apiVersion: gateway.apiconnect.ibm.com/v1beta1
 kind: GatewayCluster
 metadata:
-  name: gwv6
+  name: gateway-cluster
 spec:
-  version: 10.0.5
-  profile: n1xc4.m8
-  imagePullSecrets:
-  - ibm-entitlement-key
+  additionalDomainConfig:
+    - certs:
+        - certType: usrcerts
+          secret: apimanager-ca
+      dpApp:
+        config:
+          - gwd-add-apimgmt-ca
+      name: apiconnect
+  adminUser:
+    secretName: admin-credentials
+  apicGatewayPeeringTLS:
+    secretName: gateway-peering
+  apicGatewayServiceTLS:
+    secretName: gateway-service
   apicGatewayServiceV5CompatibilityMode: false
   gatewayEndpoint:
     annotations:
-      certmanager.k8s.io/issuer: ingress-issuer
+      cert-manager.io/issuer: ingress-issuer
     hosts:
-    - name: gw.$STACK_HOST
-      secretName: gwv6-endpoint
+      - name: >-
+          gw.HOST
+        secretName: gateway-cluster-endpoint
+    ingressClassName: public-iks-k8s-nginx
   gatewayManagerEndpoint:
     annotations:
-      certmanager.k8s.io/issuer: ingress-issuer
+      cert-manager.io/issuer: ingress-issuer
     hosts:
-    - name: gwd.$STACK_HOST
-      secretName: gwv6-manager-endpoint
-  apicGatewayServiceTLS:
-    secretName: gateway-service
-  apicGatewayPeeringTLS:
-    secretName: gateway-peering
-  datapowerLogLevel: 3
-  license:
-    accept: true
-    use: nonproduction
+      - name: >-
+          gwd.HOST
+        secretName: gateway-cluster-manager-endpoint
+    ingressClassName: public-iks-k8s-nginx
+  imagePullSecrets:
+    - ibm-entitlement-key
+  profile: n1xc4.m8
+  syslogConfig:
+    enabled: false
   tokenManagementService:
     enabled: true
     storage:
-      storageClassName: ibmc-block-gold
+      storageClassName: ibmc-vpc-block-10iops-tier
       volumeSize: 30Gi
-  additionalDomainConfig:
-    - name: "apiconnect"
-      certs:
-      - certType: "usrcerts"
-        secret: "apimanager-ca"
-      dpApp:
-        config:
-        - "gwd-add-apimgmt-ca"
-        local:  []
-  adminUser:
-    secretName: admin-credentials
-  syslogConfig:
-    enabled: false # if true, provide below details
