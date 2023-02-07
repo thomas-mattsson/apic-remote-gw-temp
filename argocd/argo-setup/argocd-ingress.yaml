@@ -20,7 +20,7 @@ spec:
             return hs
           end
         end
-    cert-manager.io/Certificate: |
+    cert-manager.io/Certificate:
       hs = {}
       if obj.status ~= nil then
         if obj.status.conditions ~= nil then

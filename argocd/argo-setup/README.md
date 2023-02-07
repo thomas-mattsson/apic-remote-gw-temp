@@ -54,7 +54,7 @@ To correctly show the CRD types used in this project as healthy when running, th
             return hs
           end
         end
-    cert-manager.io/Certificate: |
+    cert-manager.io/Certificate:
       hs = {}
       if obj.status ~= nil then
         if obj.status.conditions ~= nil then
