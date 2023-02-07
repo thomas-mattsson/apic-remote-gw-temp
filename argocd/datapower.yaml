@@ -4,6 +4,8 @@ metadata:
   name: datapower
   annotations:
     argocd.argoproj.io/sync-wave: "100"
+  labels:
+    group: applications
 spec:
   project: default
   source:
