@@ -2,6 +2,18 @@
 
 Gitops config for deploying API Connect gateway and analytics
 
+## Preparing your own version of this repo
+
+Make a fork of this repository and update the following:
+
+### Ingress subdomain
+
+Make sure to update [env/nonprod/custom/ingress-subdomain.yaml](env/nonprod/custom/ingress-subdomain.yaml) to have the host name for your ingress subdomain.
+
+### Gitops repository
+
+Make sure to update [argocd/kustomization.yaml](argocd/kustomization.yaml) and [argocd/bootstrap.yaml](argocd/bootstrap.yaml) with the git repo and revision used in your fork of this repository.
+
 ## Preparing a fresh Kubernetes environment
 
 Log into the cluster so you can use `kubectl` against it.
@@ -18,27 +30,15 @@ operator-sdk olm install
 
 For details see here: <https://olm.operatorframework.io/docs/getting-started/>
 
-### Updates to the repository
-
-The ingress subdomain for the gateway cluster deployments needs to be updated before the gateway is deployed. Make a fork of this repository and update the following:
-
-#### Ingress subdomain
-
-Make sure to update [env/nonprod/ingress-subdomain.yaml](env/nonprod/ingress-subdomain.yaml) to have the host name for your ingress subdomain.
-
-#### Gitops repository
-
-Make sure to update [argocd/kustomization.yaml](argocd/kustomization.yaml) and [argocd/bootstrap.yaml](argocd/bootstrap.yaml) with the git repo and revision used in your fork of this repository.
-
 ### ArgoCD
 
-We are using ArgoCD to deploy the remote gateway and the necessary components. Optionally everything can be installed using Kustomize instead.
-
-If Argo CD is used see details in [argocd/argo-setup/README.md](argocd/argo-setup/README.md)
+See details in [argocd/argo-setup/README.md](argocd/argo-setup/README.md) for Argo CD installation.
 
 ## Add the ArgoCD applications
 
 To install the remote gateway and its dependencies apply the necessary ArgoCD applications through the bootstrap application as follows:
+
+**_NOTE_**: Replace URL with the one of your forked repo.
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-remote-gw/main/argocd/bootstrap.yaml -n argocd
