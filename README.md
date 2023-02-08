@@ -73,6 +73,10 @@ kubectl create secret docker-registry ibm-entitlement-key -n datapower \
 
 TBW
 
+## Enable the new gateway for a catalog
+
+TBW
+
 ## References
 
 This is based on https://community.ibm.com/community/user/integration/blogs/christopher-phillips1/2021/02/08/how-to-configure-your-gateway-in-a-different-cloud
