@@ -1,6 +1,6 @@
 resources:
 #  - datapower.yaml
-#  - cert-manager.yaml
+  - cert-manager.yaml
 #  - api-connect-operator.yaml
 
 patches:
