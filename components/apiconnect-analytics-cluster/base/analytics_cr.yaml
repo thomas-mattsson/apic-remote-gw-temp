@@ -22,7 +22,7 @@ metadata:
     app.kubernetes.io/name: "analytics"
   }
 spec:
-  profile: n1xc4.m8
+  profile: n1xc2.m16
   imagePullSecrets:
     - ibm-entitlement-key
   imageRegistry: cp.icr.io/cp/apic
