@@ -1,5 +1,5 @@
 resources:
-  - apiconnect.yaml
+  - gatewaycluster.yaml
   - cert-manager.yaml
   - api-connect-operator.yaml
 

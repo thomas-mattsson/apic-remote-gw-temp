@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apiconnect
+  name: gatewaycluster
   annotations:
     argocd.argoproj.io/sync-wave: "100"
   labels:
@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    path: 'env/nonprod/apiconnect'
+    path: 'env/nonprod/gatewaycluster'
   destination:
     server: https://kubernetes.default.svc
     namespace: apic
