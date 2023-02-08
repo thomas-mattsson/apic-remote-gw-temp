@@ -1,5 +1,5 @@
 resources:
-#  - datapower.yaml
+  - apiconnect.yaml
   - cert-manager.yaml
   - api-connect-operator.yaml
 

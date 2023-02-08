@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+components:
+- ../../../../components/apiconnect-gw-cluster/variants/nonprod
+- ../custom
+
+resources:
+- ../../../../components/apiconnect-gw-cluster/base

@@ -3,3 +3,5 @@ kind: Kustomization
 
 resources:
 - gatewaycluster.yaml
+- gwd-add-apimgmt-ca.yaml
+
