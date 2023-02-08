@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: datapower
+  name: apiconnect
   annotations:
     argocd.argoproj.io/sync-wave: "100"
   labels:
@@ -9,10 +9,10 @@ metadata:
 spec:
   project: default
   source:
-    path: 'env/nonprod/datapower'
+    path: 'env/nonprod/apiconnect'
   destination:
     server: https://kubernetes.default.svc
-    namespace: datapower
+    namespace: apic
   syncPolicy:
     automated:
       selfHeal: true
