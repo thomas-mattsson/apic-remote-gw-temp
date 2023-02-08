@@ -1,0 +1,12 @@
+apiVersion: analytics.apiconnect.ibm.com/v1beta1
+kind: AnalyticsCluster
+metadata:
+  name: analytics
+spec:
+  ingestion:
+    endpoint:
+      hosts:
+          # replace remote-gateway-mvp-e7d3d93b8b317d269525bf063b24f98d-0000.eu-de.containers.appdomain.cloud with your ingress subdomain
+        - name: >-
+            ai.remote-gateway-mvp-e7d3d93b8b317d269525bf063b24f98d-0000.eu-de.containers.appdomain.cloud
+          secretName: analytics-ai-endpoint

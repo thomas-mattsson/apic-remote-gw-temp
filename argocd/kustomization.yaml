@@ -1,7 +1,8 @@
 resources:
-  - gatewaycluster.yaml
   - cert-manager.yaml
   - api-connect-operator.yaml
+  - gatewaycluster.yaml
+  - analyticscluster.yaml
 
 patches:
 - target:

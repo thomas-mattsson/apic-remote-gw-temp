@@ -6,4 +6,4 @@ components:
 - custom
 
 resources:
-- ../../../components/apiconnect-gw-cluster/base
+- ../../../components/apiconnect-analytics-cluster/base
