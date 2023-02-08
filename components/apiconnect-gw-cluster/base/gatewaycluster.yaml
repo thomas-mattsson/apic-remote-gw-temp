@@ -34,7 +34,7 @@ spec:
           gwd.HOST
         secretName: gateway-cluster-manager-endpoint
     ingressClassName: public-iks-k8s-nginx
-  imageRegistry: cp.icr.io/cp/datapower
+  imageRegistry: cp.icr.io/cp/apic
   imagePullSecrets:
     - ibm-entitlement-key
   profile: n1xc4.m8
