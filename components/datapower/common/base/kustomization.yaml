@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - namespace.yaml
 - gwd-add-apimgmt-ca.yaml
-- ingress-issuer-v1.yaml
+

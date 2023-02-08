@@ -12,7 +12,7 @@ spec:
     path: 'components/api-connect-operator/base'
   destination:
     server: https://kubernetes.default.svc
-    namespace: operators
+    namespace: apic
   syncPolicy:
     automated:
       selfHeal: true
