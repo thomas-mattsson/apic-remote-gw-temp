@@ -8,7 +8,7 @@ Make a fork of this repository and update the following:
 
 ### Ingress subdomain
 
-Make sure to update [env/nonprod/custom/ingress-subdomain.yaml](env/nonprod/custom/ingress-subdomain.yaml) to have the host name for your ingress subdomain.
+Make sure to update [env/nonprod/gatewaycluster/custom/ingress-subdomain.yaml](env/nonprod/gatewaycluster/custom/ingress-subdomain.yaml) to have the host name for your ingress subdomain.
 
 ### Gitops repository
 
