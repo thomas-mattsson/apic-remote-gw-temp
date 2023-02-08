@@ -69,3 +69,10 @@ kubectl create secret docker-registry ibm-entitlement-key -n datapower \
 --docker-password="<entitlement_key>" \
 --docker-server=cp.icr.io
 ```
+# References
+
+This is based on https://community.ibm.com/community/user/integration/blogs/christopher-phillips1/2021/02/08/how-to-configure-your-gateway-in-a-different-cloud
+
+Documentation on API Connect and DataPower operator install: https://www.ibm.com/docs/en/api-connect/10.0.x?topic=do-deploying-operators-in-single-namespace-api-connect-cluster
+
+Installing DataPower Subsystem for API Connect: https://www.ibm.com/docs/en/api-connect/10.0.x?topic=subsystems-installing-datapower-gateway-subsystem
