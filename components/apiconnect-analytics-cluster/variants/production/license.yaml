@@ -1,0 +1,11 @@
+apiVersion: analytics.apiconnect.ibm.com/v1beta1
+kind: AnalyticsCluster
+metadata:
+  name: analytics
+spec:
+  version: 10.0.5.2
+  license:
+    accept: true
+    license: L-GVEN-GFUPVE
+    use: production
+
