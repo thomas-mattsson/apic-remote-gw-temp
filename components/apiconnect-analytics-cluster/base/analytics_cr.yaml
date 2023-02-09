@@ -37,10 +37,10 @@ spec:
         cert-manager.io/issuer: ingress-issuer
         nginx.ingress.kubernetes.io/ssl-passthrough: "false"
         nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
-        #nginx.ingress.kubernetes.io/auth-tls-secret: apic/analytics-ingestion-client
-        nginx.ingress.kubernetes.io/auth-tls-secret: apic/ca-test
+        nginx.ingress.kubernetes.io/auth-tls-secret: apic/analytics-ingestion-client
         nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
         nginx.ingress.kubernetes.io/auth-tls-verify-depth: "1"
+        nginx.ingress.kubernetes.io/proxy-ssl-secret: apic/analytics-ingestion-client
       hosts: 
       - name: ai.HOST
         secretName: analytics-ai-endpoint
