@@ -74,7 +74,7 @@ kubectl create secret docker-registry ibm-entitlement-key -n apic \
 Extract the remote gateway client certificates:
 
 ```
-kubectl -n apic get secrets analytics-ingestion-client -o yaml > secret.yaml
+kubectl -n apic get secrets gateway-client-client -o yaml > secret.yaml
 
 grep ca.crt secret.yaml | head -1 | awk '{print $2}' | base64 -d > ca.crt.pem
 grep tls.crt secret.yaml | head -1 | awk '{print $2}' | base64 -d > tls.crt.pem
