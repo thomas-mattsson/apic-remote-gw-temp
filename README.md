@@ -48,14 +48,14 @@ kubectl apply -f https://raw.githubusercontent.com/Nordic-MVP-GitOps-Repos/apic-
 
 Replace `<password>` with something hard to guess
 
-`kubectl create secret generic admin-credentials --from-literal=password=<password> -n datapower`
+`kubectl create secret generic admin-credentials --from-literal=password=<password> -n apic`
 
 Add the API manager CA following these instructions:
 
 1. Extract the CA from the API manager endpoint and rename it to api-manager.crt
 2. Add the CA into a secret using the following command
 
-`kubectl create secret generic apimanager-ca --from-file=./api-manager.crt -n datapower`
+`kubectl create secret generic apimanager-ca --from-file=./api-manager.crt -n apic`
 
 Add the IBM entitlement key following these instructions:
 
@@ -64,7 +64,7 @@ Add the IBM entitlement key following these instructions:
 3. Select the **Get entitlement key** to retrieve the key.
 
 ```bash
-kubectl create secret docker-registry ibm-entitlement-key -n datapower \
+kubectl create secret docker-registry ibm-entitlement-key -n apic \
 --docker-username=cp \
 --docker-password="<entitlement_key>" \
 --docker-server=cp.icr.io
@@ -74,7 +74,7 @@ kubectl create secret docker-registry ibm-entitlement-key -n datapower \
 Extract the remote gateway client certificates:
 
 ```
-kubectl get secrets  gateway-client-client -o yaml > secret.yaml
+kubectl -n apic get secrets analytics-ingestion-client -o yaml > secret.yaml
 
 grep ca.crt secret.yaml | head -1 | awk '{print $2}' | base64 -d > ca.crt.pem
 grep tls.crt secret.yaml | head -1 | awk '{print $2}' | base64 -d > tls.crt.pem
