@@ -71,7 +71,19 @@ kubectl create secret docker-registry ibm-entitlement-key -n datapower \
 ```
 ## Register the new gateway with API Manager
 
-TBW
+Extract the remote gateway client certificates:
+
+```
+kubectl get secrets  gateway-client-client -o yaml > secret.yaml
+
+grep ca.crt secret.yaml | head -1 | awk '{print $2}' | base64 -d > ca.crt.pem
+grep tls.crt secret.yaml | head -1 | awk '{print $2}' | base64 -d > tls.crt.pem
+grep tls.key secret.yaml | head -1 | awk '{print $2}' | base64 -d > tls.key.pem
+```
+
+In APIM Cloud Manager, Under Resources / TLS, create a new Keystore and Truststore with the above certificates. Create a new TLS Client Profile with the Keystore and Truststore you just created.
+
+In APIM Cloud Manager, under Topology, Register the remote gateway with the TLS Client Profile you just created and the management and API endpoints pointing to the hosts you've setup in [ingress-subdomain.yaml](env/nonprod/gatewaycluster/custom/ingress-subdomain.yaml)
 
 ## Enable the new gateway for a catalog
 
