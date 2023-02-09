@@ -87,7 +87,7 @@ In APIM Cloud Manager, under Topology, Register the remote gateway with the TLS 
 
 ## Enable the new gateway for a catalog
 
-TBW
+In APIM API Manager, under Manage Catalogs, find the Catalog you'd like to use the remote gateway with. In the Catalog, under Catalog Settings/Gateway Services, add the remote gateway.
 
 ## References
 
