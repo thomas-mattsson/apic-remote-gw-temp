@@ -1,0 +1,8 @@
+apiVersion: analytics.apiconnect.ibm.com/v1beta1
+kind: AnalyticsCluster
+metadata:
+  name: analytics
+spec:
+  ingestion:
+    endpoint:
+      ingressClassName: public-iks-k8s-nginx
