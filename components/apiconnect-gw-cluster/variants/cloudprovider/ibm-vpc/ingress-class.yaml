@@ -1,0 +1,9 @@
+apiVersion: gateway.apiconnect.ibm.com/v1beta1
+kind: GatewayCluster
+metadata:
+  name: gateway-cluster
+spec:
+  gatewayEndpoint:
+    ingressClassName: public-iks-k8s-nginx
+  gatewayManagerEndpoint:
+    ingressClassName: public-iks-k8s-nginx

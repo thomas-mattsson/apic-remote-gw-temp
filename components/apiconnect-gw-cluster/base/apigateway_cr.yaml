@@ -25,7 +25,7 @@ spec:
       - name: >-
           gw.HOST
         secretName: gateway-cluster-endpoint
-    ingressClassName: public-iks-k8s-nginx
+    ingressClassName: REPLACED_BY_KUSTOMIZE_PATCH
   gatewayManagerEndpoint:
     annotations:
       cert-manager.io/issuer: ingress-issuer
@@ -33,7 +33,7 @@ spec:
       - name: >-
           gwd.HOST
         secretName: gateway-cluster-manager-endpoint
-    ingressClassName: public-iks-k8s-nginx
+    ingressClassName: REPLACED_BY_KUSTOMIZE_PATCH
   imageRegistry: cp.icr.io/cp/apic
   imagePullSecrets:
     - ibm-entitlement-key
@@ -43,5 +43,5 @@ spec:
   tokenManagementService:
     enabled: true
     storage:
-      storageClassName: ibmc-vpc-block-10iops-tier
+      storageClassName: REPLACED_BY_KUSTOMIZE_PATCH
       volumeSize: 30Gi
