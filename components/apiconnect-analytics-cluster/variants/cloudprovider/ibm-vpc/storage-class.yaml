@@ -7,4 +7,4 @@ spec:
     type: shared
     shared:
       volumeClaimTemplate:
-        storageClassName: gp2
+        storageClassName: ibmc-vpc-block-10iops-tier

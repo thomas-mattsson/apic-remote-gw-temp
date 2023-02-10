@@ -7,5 +7,4 @@ spec:
     type: shared
     shared:
       volumeClaimTemplate:
-        $patch: replace
         volumeSize: 100Gi

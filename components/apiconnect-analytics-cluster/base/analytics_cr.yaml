@@ -47,5 +47,5 @@ spec:
     type: shared
     shared:
       volumeClaimTemplate:
-        storageClassName: ibmc-vpc-block-10iops-tier
-        volumeSize: 30Gi
+        storageClassName: REPLACED_BY_KUSTOMIZE_PATCH
+        volumeSize: REPLACED_BY_KUSTOMIZE_PATCH
