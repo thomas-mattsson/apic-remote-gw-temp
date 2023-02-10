@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    path: 'env/nonprod/analyticscluster'
+    path: 'env/ibm-vpc/nonprod/analyticscluster'
   destination:
     server: https://kubernetes.default.svc
     namespace: apic

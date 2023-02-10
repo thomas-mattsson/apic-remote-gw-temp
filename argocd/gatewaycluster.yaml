@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    path: 'env/nonprod/gatewaycluster'
+    path: 'env/ibm-vpc/nonprod/gatewaycluster'
   destination:
     server: https://kubernetes.default.svc
     namespace: apic

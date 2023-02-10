@@ -48,4 +48,4 @@ spec:
     shared:
       volumeClaimTemplate:
         storageClassName: REPLACED_BY_KUSTOMIZE_PATCH
-        volumeSize: REPLACED_BY_KUSTOMIZE_PATCH
+        volumeSize: 15Gi
