@@ -1,0 +1,10 @@
+apiVersion: analytics.apiconnect.ibm.com/v1beta1
+kind: AnalyticsCluster
+metadata:
+  name: analytics
+spec:
+  storage:
+    type: shared
+    shared:
+      volumeClaimTemplate:
+        volumeSize: 100Gi
