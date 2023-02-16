@@ -23,3 +23,8 @@ variable "apimanager-ca-file" {
   description = "API manager CA file location"
   type        = string
 }
+
+variable "ingress-subdomain" {
+  description = "The ingress subdomain for the cluster ingress controller"
+  type        = string
+}

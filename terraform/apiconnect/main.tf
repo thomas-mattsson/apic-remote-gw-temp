@@ -6,8 +6,19 @@ data "kustomization_build" "cert-manager" {
   path = "../components/cert-manager/base"
 }
 
+# Ensure namespace is created first
+resource "kustomization_resource" "certmanager-namespace" {
+  for_each = { for id in data.kustomization_build.cert-manager.ids: id => id if length(regexall("/Namespace/", id)) > 0 }
+
+  manifest = data.kustomization_build.cert-manager.manifests[each.value]
+}
+
 resource "kustomization_resource" "cert-manager" {
-  for_each = data.kustomization_build.cert-manager.ids
+  depends_on = [
+    kustomization_resource.certmanager-namespace
+  ]
+
+  for_each = { for id in data.kustomization_build.cert-manager.ids: id => id if length(regexall("/Namespace/", id)) == 0 }
 
   manifest = data.kustomization_build.cert-manager.manifests[each.value]
   wait = true
@@ -58,13 +69,10 @@ data "kustomization_overlay" "api-connect-operator" {
   namespace = var.namespace
 }
 
-# Ensure namespace resource is created first
-locals {
-  namespaceid = "_/Namespace/_/${var.namespace}"
-}
-
 resource "kustomization_resource" "namespace" {
-  manifest = data.kustomization_overlay.api-connect-operator.manifests[local.namespaceid]
+  for_each = { for id in data.kustomization_overlay.api-connect-operator.ids: id => id if length(regexall("/Namespace/", id)) > 0 }
+
+  manifest =  data.kustomization_overlay.api-connect-operator.manifests[each.value]
 }
 
 resource "kustomization_resource" "admin-secret" {
@@ -139,27 +147,59 @@ resource "kustomization_resource" "api-connect-operator" {
     kustomization_resource.apimanager-ca
   ]
 
-  for_each = { for id in data.kustomization_overlay.api-connect-operator.ids : id => id if id != local.namespaceid }
+  for_each = { for id in data.kustomization_overlay.api-connect-operator.ids: id => id if length(regexall("/Namespace/", id)) == 0 }
 
-  manifest = data.kustomization_overlay.api-connect-operator.manifests[each.value]
+  manifest =  data.kustomization_overlay.api-connect-operator.manifests[each.value]
 
   wait = true
 }
 
-data "kustomization_overlay" "apiconnect-operands" {
+data "kustomization_overlay" "api-connect-operands" {
   resources = [
     "../env/${var.cloudprovider}/nonprod/gatewaycluster",
     "../env/${var.cloudprovider}/nonprod/analyticscluster"
   ]
+
+  patches {
+    target {
+      kind = "AnalyticsCluster"
+      name = "analytics"
+    }
+    patch = <<-EOF
+      - op: replace
+        path: /spec/ingestion/endpoint/hosts/0/name
+        value: "ai.${var.ingress-subdomain}"
+    EOF
+  }
+
+  patches {
+    target {
+      kind = "GatewayCluster"
+      name = "gateway-cluster"
+    }
+    patch = <<-EOF
+      - op: replace
+        path: /spec/gatewayEndpoint/hosts/0/name
+        value: "gw.${var.ingress-subdomain}"
+      - op: replace
+        path: /spec/gatewayManagerEndpoint/hosts/0/name
+        value: "gwd.${var.ingress-subdomain}"
+    EOF
+  }
+
   namespace = var.namespace
 }
 
-resource "kustomization_resource" "apiconnect-operands" {
+resource "kustomization_resource" "api-connect-operands" {
   depends_on = [
     kustomization_resource.api-connect-operator
   ]
 
-  for_each = data.kustomization_overlay.apiconnect-operands.ids
+  for_each = toset([
+    "_/ConfigMap/${var.namespace}/gwd-add-apimgmt-ca",
+    "gateway.apiconnect.ibm.com/GatewayCluster/${var.namespace}/gateway-cluster",
+    "analytics.apiconnect.ibm.com/AnalyticsCluster/${var.namespace}/analytics"
+  ])
 
-  manifest = data.kustomization_overlay.apiconnect-operands.manifests[each.value]
+  manifest = data.kustomization_overlay.api-connect-operands.manifests[each.value]
 }

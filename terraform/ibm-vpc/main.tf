@@ -5,11 +5,11 @@ provider ibm {
 }
 
 resource "ibm_resource_group" "resourceGroup" {
-   name = var.name
+  name = var.name
 }
 
 resource "ibm_is_vpc" "vpc" {
-  name = "${var.name}-vpc"
+  name           = "${var.name}-vpc"
   resource_group = ibm_resource_group.resourceGroup.id
 }
 
@@ -42,10 +42,10 @@ resource "ibm_is_subnet" "subnet" {
 }
 
 resource "ibm_resource_instance" "cos_instance" {
-  name     = "${var.name}-cos-instance"
-  service  = "cloud-object-storage"
-  plan     = "standard"
-  location = "global"
+  name              = "${var.name}-cos-instance"
+  service           = "cloud-object-storage"
+  plan              = "standard"
+  location          = "global"
   resource_group_id = ibm_resource_group.resourceGroup.id
 }
 
@@ -59,11 +59,23 @@ resource "ibm_container_vpc_cluster" "cluster" {
   cos_instance_crn  = ibm_resource_instance.cos_instance.id
   zones {
       subnet_id     = ibm_is_subnet.subnet.id
-      name           = ibm_is_subnet.subnet.zone
+      name          = ibm_is_subnet.subnet.zone
   }
 }
 
+# Give some time for access rights to cluster to be set up
+resource "time_sleep" "wait" {
+  depends_on = [
+    ibm_container_vpc_cluster.cluster
+  ]
+
+  create_duration = "300s"
+}
+
 data "ibm_container_cluster_config" "cluster_config" {
+  depends_on = [
+    time_sleep.wait
+  ]
   cluster_name_id = ibm_container_vpc_cluster.cluster.id
   config_dir      = "${path.root}/.terraform"
 }
@@ -109,3 +121,6 @@ output "kubeconfig" {
   sensitive = true
 }
 
+output "ingress-subdomain" {
+  value = ibm_container_vpc_cluster.cluster.ingress_hostname
+}
