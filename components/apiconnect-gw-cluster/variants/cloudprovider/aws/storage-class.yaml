@@ -5,4 +5,4 @@ metadata:
 spec:
   tokenManagementService:
     storage:
-      storageClassName: ibmc-vpc-block-10iops-tier
+      storageClassName: gp2
