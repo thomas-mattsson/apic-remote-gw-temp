@@ -3,7 +3,7 @@ kind: Kustomization
 
 components:
 - ../../../../components/apiconnect-gw-cluster/variants/nonprod
-- ../../../../components/apiconnect-gw-cluster/variants/cloudprovider/ibm-vpc
+- ../../../../components/apiconnect-gw-cluster/variants/cloudprovider/aws
 
 - custom
 
