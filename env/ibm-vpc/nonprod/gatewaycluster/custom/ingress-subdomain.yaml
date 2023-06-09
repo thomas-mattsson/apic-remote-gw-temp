@@ -7,10 +7,10 @@ spec:
     hosts:
         # replace remote-gateway-mvp-e7d3d93b8b317d269525bf063b24f98d-0000.eu-de.containers.appdomain.cloud with your ingress subdomain
       - name: >-
-          gw.remote-gateway-mvp-e7d3d93b8b317d269525bf063b24f98d-0000.eu-de.containers.appdomain.cloud
+          gw.cluster-cluster-e7d3d93b8b317d269525bf063b24f98d-0000.eu-de.containers.appdomain.cloud
         secretName: gateway-cluster-endpoint
   gatewayManagerEndpoint:
     hosts:
       - name: >-
-          gwd.remote-gateway-mvp-e7d3d93b8b317d269525bf063b24f98d-0000.eu-de.containers.appdomain.cloud
+          gwd.cluster-cluster-e7d3d93b8b317d269525bf063b24f98d-0000.eu-de.containers.appdomain.cloud
         secretName: gateway-cluster-endpoint
